@@ -1,0 +1,19 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Install maven') {
+            steps {
+               sh 'sudo apt  install maven -y'
+            }
+        }
+         stage('Install jdk') {
+            steps {
+               sh 'sudo apt install openjdk-21-jdk  -y'
+            }
+        }
+    }
+}
+
+
+
