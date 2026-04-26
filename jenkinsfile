@@ -2,38 +2,24 @@ pipeline {
     agent any
 
     stages {
-
-        stage('Debug Info') {
+        stage('install maven') {
             steps {
-                echo 'Pipeline started'
-                sh 'whoami'
-                sh 'pwd'
+            sh 'sudo apt install maven -y'
             }
         }
-
-        stage('Install Maven & JDK') {
+       stage('install jdk') {
             steps {
-                sh '''
-                echo "Installing tools..."
-                sudo apt update -y
-                sudo apt install -y maven openjdk-17-jdk
-                '''
+            sh 'sudo apt install openjdk-21-jdk -y'
             }
         }
-
-        stage('Verify Installation') {
+            stage('clone reposiotry') {
             steps {
-                sh '''
-                echo "Checking versions..."
-                java -version
-                mvn -version
-                '''
+           git 'https://github.com/hellokaton/java11-examples.git'
             }
         }
-
-        stage('Clone Repository') {
+        stage('creating package') {
             steps {
-                git 'https://github.com/hellokaton/java11-examples.git'
+           sh 'mvn clean package'
             }
         }
     }
