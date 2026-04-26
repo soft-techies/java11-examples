@@ -2,14 +2,17 @@ pipeline {
     agent any
 
     stages {
-        stage('Install maven') {
+        stage('Install Maven') {
             steps {
-               sh 'sudo apt  install maven -y'
+                sh 'sudo apt install maven -y'
             }
- stage('jdk') {
+        }
+
+        stage('Install JDK') {
             steps {
-               sh 'sudo apt install openjdk-21-jdk -y'
+                sh 'sudo apt install openjdk-21-jdk -y'
             }
         }
     }
+}
 
