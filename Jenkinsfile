@@ -9,7 +9,7 @@ pipeline {
         }
 	  stage('build') {
             steps {
-               sh '''sudo docker build -t softechie/myjava:latest -f dockerfile .
+               sh '''sudo docker build -t softechie/myjava1:latest -f dockerfile .
 '''
             }
         }
@@ -21,7 +21,7 @@ pipeline {
         }
 		 stage('push') {
             steps { 
-               sh ''' sudo docker push softechie/myjava:latest
+               sh ''' sudo docker push softechie/myjava1:latest
 '''
             }
         }
