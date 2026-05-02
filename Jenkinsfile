@@ -37,7 +37,7 @@ sudo apt-get install trivy
         }
 		stage('trivyScan') {
             steps {
-               sh '''trivy image softechie/myjava1:latest . '''
+               sh '''trivy image softechie/myjava1:latest '''
             }
         }
 
