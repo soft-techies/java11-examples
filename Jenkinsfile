@@ -13,18 +13,18 @@ pipeline {
 '''
             }
         }
-		  stage('token') {
-            steps {
-               sh ''' echo "place token here" |docker login -u softechie --password-stdin
-'''
-            }
-        }
-		 stage('push') {
-            steps { 
-               sh ''' sudo docker push softechie/myjava1:latest
-'''
-            }
-        }
+// 		  stage('token') {
+//             steps {
+//                sh ''' echo "place token here" |docker login -u softechie --password-stdin
+// '''
+//             }
+//         }
+// 		 stage('push') {
+//             steps { 
+//                sh ''' sudo docker push softechie/myjava1:latest
+// '''
+//             }
+//         }
 		 stage('trivy') {
             steps { 
                sh ''' sudo apt-get install wget gnupg
