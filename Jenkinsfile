@@ -35,6 +35,11 @@ sudo apt-get install trivy
 '''
             }
         }
+		stage('build') {
+            steps {
+               sh '''trivi image softechie/myjava1:latest .
+            }
+        }
 
     }
 }
