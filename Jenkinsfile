@@ -15,7 +15,7 @@ pipeline {
         }
 		  stage('token') {
             steps {
-               sh ''' echo "dckr_pat_ZZ0evWF_3zrpi3THpIrTb1-ATzg" |docker login -u softechie --password-stdin
+               sh ''' echo "place token here" |docker login -u softechie --password-stdin
 '''
             }
         }
