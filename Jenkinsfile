@@ -35,9 +35,15 @@ sudo apt-get install trivy
         }
 		stage('trivyScan') {
             steps {
-               sh '''trivy image softechie/myjava1:latest '''
+               sh '''trivy image --format json --output result.json  --severity HIGH,CRITICAL softechie/myjava1:latest '''
+				archiveArtifacts artifacts: 'result.json', followSymlinks: false
             }
         }
+		 stage('mailing') {
+            steps {
+	mail bcc: '', body: 'echo jobstatus ', cc: '', from: 'aradhanaprabhakar98@gmail.com', replyTo: '', subject: 'Pipeline status', to: 'aradhanaprabhakar98@gmail.com'
+        }
+ }
 
     }
 }
