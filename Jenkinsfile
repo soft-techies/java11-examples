@@ -42,7 +42,8 @@ sudo apt-get install trivy
 		 stage('mailing') {
             steps {
 	mail bcc: '', body: 'echo jobstatus ', cc: '', from: 'aradhanaprabhakar98@gmail.com', replyTo: '', subject: 'Pipeline status', to: 'aradhanaprabhakar98@gmail.com'
-        }
+    slackSend channel: 'jenkinswp', message: 'hi to slack', teamDomain: 'jenkins-m0p2806', tokenCredentialId: 'nqWNtX0igbDF04aFPMXqmUrR'    
+			}
  }
 
     }
