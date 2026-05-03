@@ -22,7 +22,7 @@ pipeline {
 		sudo docker push softechie/myjava1:latest
 '''
             }
-        }
+        }}
 		 stage('trivy') {
             steps { 
                sh ''' sudo apt-get install wget gnupg
