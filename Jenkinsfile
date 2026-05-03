@@ -13,18 +13,20 @@ pipeline {
 '''
             }
         }
-// 		  stage('token') {
-//             steps {
-//                sh ''' echo "place token here" |docker login -u softechie --password-stdin
-// '''
-//             }
-//         }
-// 		 stage('push') {
-//             steps { 
-//                sh ''' sudo docker push softechie/myjava1:latest
-// '''
-//             }
-//         }
+		  stage('token') {
+            steps {
+               withCredentials([usernamePassword(credentialsId: 'dockerhubId', passwordVariable: 'myPass', usernameVariable: 'userName')])
+				{
+				
+        sh '''echo $password |docker login -u $username --password-stdin'''
+            }
+        }
+		 stage('push') {
+            steps { 
+               sh ''' sudo docker push softechie/myjava1:latest
+'''
+            }
+        }
 		 stage('trivy') {
             steps { 
                sh ''' sudo apt-get install wget gnupg
