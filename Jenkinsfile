@@ -18,12 +18,8 @@ pipeline {
                withCredentials([usernamePassword(credentialsId: 'dockerhubId', passwordVariable: 'myPass', usernameVariable: 'userName')])
 				{
 				
-        sh '''echo $myPass |docker login -u $userName --password-stdin'''
-            }
-        }}
-		 stage('push') {
-            steps { 
-               sh ''' sudo docker push softechie/myjava1:latest
+        sh '''echo $myPass |sudo docker login -u $userName --password-stdin
+		sudo docker push softechie/myjava1:latest
 '''
             }
         }
